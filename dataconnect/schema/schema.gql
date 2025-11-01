@@ -1,0 +1,51 @@
+type User @table {
+  email: String!
+  displayName: String!
+  universityID: String!
+  createdAt: Timestamp!
+  photoUrl: String
+  major: String
+  year: Int
+}
+
+type Course @table {
+  courseCode: String!
+  title: String!
+  department: String!
+  credits: Int!
+  semester: String!
+  year: Int!
+  createdAt: Timestamp!
+  description: String
+  prerequisites: [String]
+  instructor: String
+}
+
+type Building @table {
+  name: String!
+  location: String!
+  createdAt: Timestamp!
+  description: String
+  campusArea: String
+}
+
+type Organization @table {
+  name: String!
+  category: String!
+  createdAt: Timestamp!
+  description: String
+  meetingTime: String
+  meetingLocation: String
+  contactEmail: String
+}
+
+type Event @table {
+  title: String!
+  dateTime: Timestamp!
+  location: String!
+  createdAt: Timestamp!
+  organization: Organization
+  description: String
+  eventType: String
+  registrationLink: String
+}
