@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hu_guide/Screens/Main%20Screens/AboutScreen.dart';
+import 'package:hu_guide/Screens/Main%20Screens/Help_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -181,7 +182,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   icon: Icons.help_outline,
                   title: 'Help Center',
                   description: 'FAQs and support articles',
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HelpPage()),
+                    );
+                  },
                 ),
                 buildSettingItem(
                   icon: Icons.info_outline,

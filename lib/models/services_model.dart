@@ -22,6 +22,15 @@ class ServiceModel {
 }
 
 final List<ServiceModel> services = [
+  
+  ServiceModel(
+    title: "Cafeteria Administration",
+    description: "Cafeteria management and meal ticket inquiries.",
+    icon: CupertinoIcons.bag_fill,
+    color: Colors.green,
+    location: "Muslim Students Cafeteria",
+    hours: "Daily: 9:00 AM - 5:00 PM",
+  ),
   ServiceModel(
     title: "Health Center",
     description: "Get medical help, checkups, and emergency care.",
@@ -83,14 +92,6 @@ final List<ServiceModel> services = [
     location: "Main Gate & All Campus Entrances",
     hours: "24/7",
     contact: "000 (Emergency)",
-  ),
-  ServiceModel(
-    title: "Cafeteria Administration",
-    description: "Cafeteria management and meal ticket inquiries.",
-    icon: CupertinoIcons.bag_fill,
-    color: Colors.pinkAccent,
-    location: "Muslim Students Cafeteria",
-    hours: "Daily: 9:00 AM - 5:00 PM",
   ),
   ServiceModel(
     title: "Maintenance & Electricity",

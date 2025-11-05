@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:hu_guide/Screens/Main%20Screens/Help_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:hu_guide/Screens/ComingSoonScreen.dart';
 import 'package:hu_guide/Screens/Main%20Screens/AboutScreen.dart';
@@ -244,7 +245,7 @@ class _MoreScreenState extends State<MoreScreen> {
                         children: [
                           buildStatItem("1", "Generation"),
                           buildStatItem("50+", "programs"),
-                          buildStatItem("10,000+", "Students"),
+                          buildStatItem("15,000+", "Students"),
                         ],
                       ),
                     ],
@@ -325,10 +326,7 @@ class _MoreScreenState extends State<MoreScreen> {
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ComingSoonScreen(
-                          title: 'Help',
-                          icon: Icons.help_outline,
-                        ),
+                        builder: (context) => const HelpPage(),
                       ),
                     ),
                   ),

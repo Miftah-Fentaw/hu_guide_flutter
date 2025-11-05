@@ -74,7 +74,7 @@ class _CollegesState extends State<Colleges> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Align(
-                      alignment: Alignment.topLeft,
+                      alignment: Alignment.topRight,
                       child: Text(
                         'Colleges & Schools',
                         style: TextStyle(

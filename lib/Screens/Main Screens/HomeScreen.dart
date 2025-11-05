@@ -383,7 +383,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: EdgeInsets.all(screenWidth * 0.0125),
                   child: Column(
                     // Use ListView.builder for dynamic lists
-                    children: List.generate(4, (index) {
+                    children: List.generate(5, (index) {
                       final item = services[index];
 
                       return Container(

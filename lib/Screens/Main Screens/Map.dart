@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:hu_guide/models/map_model.dart';
+import 'package:hu_guide/models/campus_models.dart';
 
 class CampusMapScreen extends StatefulWidget {
-  const CampusMapScreen({super.key});
+  final Location? location;
+  const CampusMapScreen({super.key, this.location});
 
   @override
   State<CampusMapScreen> createState() => _CampusMapScreenState();
@@ -14,38 +17,6 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
   final MapController _mapController = MapController();
   final TextEditingController _searchController = TextEditingController();
   List<Map<String, dynamic>> _filteredPlaces = [];
-
-  // Example campus places
-  final List<Map<String, dynamic>> campusPlaces = [
-    {
-      "name": "Main Library",
-      "desc": "The central library with Wi-Fi and study areas.",
-      "lat": 9.4095,
-      "lng": 42.0407,
-      "color": const Color(0xFF2563EB),
-    },
-    {
-      "name": "Cafeteria",
-      "desc": "Affordable meals and snacks available all day.",
-      "lat": 9.4088,
-      "lng": 42.0412,
-      "color": const Color(0xFFEA580C),
-    },
-    {
-      "name": "ICT Lab",
-      "desc": "Computer lab for programming and research.",
-      "lat": 9.4101,
-      "lng": 42.037225,
-      "color": const Color(0xFF9333EA),
-    },
-    {
-      "name": "Afran kalo hall",
-      "desc": "Gathering spot for events, clubs, and announcements.",
-      "lat": 9.420437,
-      "lng": 42.037225,
-      "color": const Color(0xFF16A34A),
-    },
-  ];
 
   @override
   void initState() {
@@ -80,71 +51,37 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
         children: [
           // Header
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 50, 16, 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+            padding: const EdgeInsets.fromLTRB(5, 30, 16, 16),
+            child: Row(
               children: [
-                Text(
-                  "Campus Map",
-                  style: theme.textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back_sharp),
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  "Find important places around the university",
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey[600],
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "HU Campus Map",
+                      style: theme.textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      "Find important places around the university",
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
-
-          // Map View
-          Expanded(
-            flex: 3,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: FlutterMap(
-                mapController: _mapController,
-                options: MapOptions(
-                  initialCenter: LatLng(9.4094, 42.0405),
-                  initialZoom: 16.0,
-                ),
-                children: [
-                  TileLayer(
-                    urlTemplate:
-                        'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWlmdGFoLWRldiIsImEiOiJjbWgzcncwNXAwMzA3MmtxbnpiNTNraTh6In0.b38pKFNBDPM58ktI8SXOkA',
-                    additionalOptions: {
-                      'accessToken':
-                          'pk.eyJ1IjoibWlmdGFoLWRldiIsImEiOiJjbWgzcncwNXAwMzA3MmtxbnpiNTNraTh6In0.b38pKFNBDPM58ktI8SXOkA',
-                    },
-                    subdomains: const ['a', 'b', 'c'],
-                  ),
-                  MarkerLayer(
-                    markers: campusPlaces.map((place) {
-                      return Marker(
-                        width: 80,
-                        height: 80,
-                        point: LatLng(place["lat"], place["lng"]),
-                        child: GestureDetector(
-                          onTap: () => _showPlaceDetails(place),
-                          child: Icon(
-                            Icons.location_pin,
-                            color: place["color"],
-                            size: 36,
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          // Place List Section
           Expanded(
             flex: 2,
             child: Container(
@@ -154,9 +91,13 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
                 children: [
                   TextFormField(
                     controller: _searchController,
+                    scrollPadding: EdgeInsets.all(10),
                     decoration: InputDecoration(
                       hintText: 'Search for a place...',
-                      prefixIcon: const Icon(CupertinoIcons.search, size: 20),
+                      suffixIcon: IconButton(
+                        onPressed: _filterPlaces,
+                        icon: Icon(CupertinoIcons.search, size: 20),
+                      ),
                       filled: true,
                       fillColor: Colors.grey[200],
                       border: OutlineInputBorder(
@@ -203,6 +144,67 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
               ),
             ),
           ),
+
+          // Map View
+          Expanded(
+            flex: 3,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: FlutterMap(
+                mapController: _mapController,
+                options: MapOptions(
+                  initialCenter: widget.location != null
+                      ? LatLng(widget.location!.lat, widget.location!.lng)
+                      : LatLng(9.4094, 42.0405),
+                  initialZoom: widget.location != null ? 18.0 : 16.0,
+                ),
+                children: [
+                  TileLayer(
+                    urlTemplate:
+                        'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWlmdGFoLWRldiIsImEiOiJjbWgzcncwNXAwMzA3MmtxbnpiNTNraTh6In0.b38pKFNBDPM58ktI8SXOkA',
+                    additionalOptions: {
+                      'accessToken':
+                          'pk.eyJ1IjoibWlmdGFoLWRldiIsImEiOiJjbWgzcncwNXAwMzA3MmtxbnpiNTNraTh6In0.b38pKFNBDPM58ktI8SXOkA',
+                    },
+                    subdomains: const ['a', 'b', 'c'],
+                  ),
+                  MarkerLayer(
+                    markers: _filteredPlaces.map((place) {
+                      return Marker(
+                        width: 80,
+                        height: 80,
+                        point: LatLng(place["lat"], place["lng"]),
+                        child: GestureDetector(
+                          onTap: () => _showPlaceDetails(place),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                place["name"], // Your place name
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: place["color"],
+                                  backgroundColor: Colors.transparent, // optional to make text readable
+                                ),
+                              ),
+                              Icon(
+                                Icons.location_pin,
+                                color: place["color"],
+                                size: 36,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          // Place List Section
         ],
       ),
     );

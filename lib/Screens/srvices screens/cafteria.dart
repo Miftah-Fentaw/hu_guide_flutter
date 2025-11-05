@@ -57,6 +57,9 @@ class CafeteriaScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              IconButton(onPressed: (){
+                Navigator.pop(context);
+              }, icon: Icon(Icons.arrow_back)),
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(screenWidth * 0.045),

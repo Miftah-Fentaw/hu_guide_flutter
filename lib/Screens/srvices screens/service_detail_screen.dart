@@ -82,6 +82,7 @@ class ServiceDetailScreen extends StatelessWidget {
                   ),
               ],
             ),
+            
           ],
         ),
       ),
