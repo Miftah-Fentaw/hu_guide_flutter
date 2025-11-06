@@ -89,8 +89,12 @@ final List<College> colleges = [
     misssion:
         'To improve community health through education, research, and medical service delivery.',
     programs: [
+      'BSc in Pediatric',
+      'BSc in HO'
+      'BSc in Public Health'
       'Doctor of Medicine (MD)',
-      'BSc in Public Health',
+      'BSc in Pharmacy'
+      'BSc in Pschatric',
       'BSc in Nursing',
       'MSc in Reproductive Health',
     ],
@@ -116,17 +120,23 @@ final List<College> colleges = [
         'To empower students with technological and analytical skills to lead the digital transformation of Ethiopia and beyond.',
     programs: [
       'BSc in Computer Science',
+      'BSc in Statics and Probability'
       'BSc in Information Technology',
+      'BSc in Information Science',
+      'BSc in Information System',
       'BSc in Software Engineering',
-      'MSc in Data Science',
+      'MSc in Computer Science',
     ],
     departments: [
-      'Department of Computer Science',
+      'Department of Software Eninering',
       'Department of Information Technology',
-      'Department of Software Engineering',
+      'Department of Information System',
+      'Department of Computer Science',
+      'Department of Information Science',
+      'Department of Statics',
     ],
     college_name: 'College of Computing and Informatics',
-    location: 'Haramaya University Campus',
+    location: 'Haramaya University Main Campus',
     contact: '+251 911 456 789',
   ),
 ];

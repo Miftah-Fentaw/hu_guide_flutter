@@ -304,9 +304,9 @@ class _MoreScreenState extends State<MoreScreen> {
                     ),
                   ),
                   buildFeatureCard(
-                    icon: Icons.mail_outline,
-                    title: "Support",
-                    description: "Get help",
+                    icon: Icons.comment_bank_sharp,
+                    title: "Feedback",
+                    description: "Give Feedback",
                     gradientColors: const [Colors.purple, Colors.pink],
                     onTap: () => Navigator.push(
                       context,

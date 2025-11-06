@@ -82,6 +82,7 @@ class CollegeDetailScreen extends StatelessWidget {
   Widget _buildInfoCard() {
     return Card(
       elevation: 2,
+      color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -125,6 +126,7 @@ class CollegeDetailScreen extends StatelessWidget {
 
   Widget _buildDepartmentsList() {
     return Card(
+      color: Colors.white,
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       clipBehavior: Clip.antiAlias,
@@ -133,9 +135,7 @@ class CollegeDetailScreen extends StatelessWidget {
           return ListTile(
             leading: const Icon(CupertinoIcons.paperclip, color: Colors.blue),
             title: Text(dept),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () {
-            },
+            
           );
         }).toList(),
       ),

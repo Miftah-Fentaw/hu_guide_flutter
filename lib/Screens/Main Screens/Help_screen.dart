@@ -10,47 +10,48 @@ class HelpPage extends StatefulWidget {
 
 class _HelpPageState extends State<HelpPage> {
   final List<FaqItem> FAQs = [
-    FaqItem(
-      question: "🎓 Why is the Harar campus not included?",
-      answer:
-          "To register, log into your student portal, go to the 'Registration' section, and select your preferred courses. Submit before the registration deadline.",
-    ),
-    FaqItem(
-      question: "🎓 How do i register using the portal on in person?",
-      answer:
-          "To register, log into your student portal, go to the 'Registration' section, and select your preferred courses. Submit before the registration deadline.",
-    ),
-    FaqItem(
-      question: "🏫 Where can I find study resources?",
-      answer:
-          "You can access all resources in the 'Resources' section of the UniConnect app. Filter by your college or course to find what fits you best.",
-    ),
-    FaqItem(
-      question: "💬 How do I give feedback?",
-      answer:
-          "Open the Feedback page from the sidebar. Enter your subject and message, then click Submit. Your feedback goes directly to the admin team.",
-    ),
-    FaqItem(
-      question: "📅 How can I stay updated with university news?",
-      answer:
-          "Visit the News page to see the latest announcements, events, and opportunities. You can also enable notifications for instant updates.",
-    ),
-    FaqItem(
-      question: "👨‍🎓 What’s special for Freshman and GC Students?",
-      answer:
-          "Freshman students get access to beginner guides and campus tips. GC (Graduating Class) students see internship listings, thesis templates, and final exam prep materials.",
-    ),
-    FaqItem(
-      question: "🎓 The chatbot is not wotking?",
-      answer:
-          "To register, log into your student portal, go to the 'Registration' section, and select your preferred courses. Submit before the registration deadline.",
-    ),
-    FaqItem(
-      question: "🎓 How can i contact the developer?",
-      answer:
-          "To register, log into your student portal, go to the 'Registration' section, and select your preferred courses. Submit before the registration deadline.",
-    ),
-  ];
+  FaqItem(
+    question: "🎓 Why is the Harar and other campuses not included?",
+    answer:
+        "Currently, HU GUIDE supports only selected campuses due to lack of data integration. We're planning to include Harar and other campuses soon",
+  ),
+  FaqItem(
+    question: "📱 How do I register using the portal or in person?",
+    answer:
+        "To register online, log into your student portal, go to the 'Registration' section, select your courses, and submit before the deadline. For in-person registration, visit the registrar’s office with your student ID and course selections.",
+  ),
+  FaqItem(
+    question: "🏫 Where can I find study resources?",
+    answer:
+        "Access resources via the 'Resources' section in UniConnect or browse online here: [University Resource Hub](https://www.universitywebsite.edu/resources). You can filter by college, course, or semester for tailored materials.",
+  ),
+  FaqItem(
+    question: "💬 How do I give feedback?",
+    answer:
+        "Open the 'Feedback' page from the app menu. Enter your subject and message, then click Submit. All feedback is sent directly to the admin team and reviewed regularly.",
+  ),
+  FaqItem(
+    question: "📅 How can I stay updated with university news?",
+    answer:
+        "Visit the 'New and Events' page in the app for latest announcements, events, and opportunities. Enable notifications in settings to receive instant updates on important campus activities.",
+  ),
+  FaqItem(
+    question: "👨‍🎓 What’s special for Freshman and GC Students?",
+    answer:
+        "Freshman students get beginner guides, campus maps, and orientation tips. GC (Graduating Class) students will soon have access to internship listings, thesis templates, and final exam prep materials.",
+  ),
+  FaqItem(
+    question: "❌ The chatbot is not working?",
+    answer:
+        "If the chatbot is unresponsive, check your internet connection first. If the issue persists, restart the app or contact support via the 'Help & Support' section.",
+  ),
+  FaqItem(
+    question: "💻 How can I contact the developer?",
+    answer:
+        "You can contact the developer via email at support@uniconnect.edu or open the 'Contact Developer' option in the app to submit feedback directly.",
+  ),
+];
+
 
   @override
   Widget build(BuildContext context) {

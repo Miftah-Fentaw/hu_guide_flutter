@@ -20,9 +20,7 @@ class _EventsState extends State<Events> {
       Uri.parse('http://192.168.137.122:8000/api/events/'),
     );
 
-    // Android emulator: 10.0.2.2 points to localhost
     if (response.statusCode == 200) {
-      // Decode JSON as a list, not a map
       final List<dynamic> eventsJson = json.decode(response.body);
       return eventsJson.map((e) => Event.fromJson(e)).toList();
     } else {
@@ -52,7 +50,7 @@ class _EventsState extends State<Events> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'Events & Programs',
+                        'News and Events',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: screenWidth * 0.05,
@@ -84,7 +82,6 @@ class _EventsState extends State<Events> {
                   future: fetchEvents(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      // While waiting, show your custom loading indicator
                       return const Center(
                         child: SizedBox(
                           width: 50,
@@ -105,7 +102,6 @@ class _EventsState extends State<Events> {
                         ),
                       );
                     } else if (snapshot.hasError) {
-                      // Display errors from the backend or parsing issues
                       return Center(
                         child: Text(
                           'Error: ${snapshot.error}',
@@ -113,11 +109,9 @@ class _EventsState extends State<Events> {
                         ),
                       );
                     } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                      // Handle empty event list
                       return const Center(child: Text('No events found.'));
                     }
 
-                    // Data loaded successfully
                     final eventsList = snapshot.data!;
                     return RefreshIndicator(
                       onRefresh: () async {

@@ -41,9 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
       Uri.parse('http://192.168.137.122:8000/api/events/'),
     );
 
-    // Android emulator: 10.0.2.2 points to localhost
     if (response.statusCode == 200) {
-      // Decode JSON as a list, not a map
       final List<dynamic> eventsJson = json.decode(response.body);
       return eventsJson.map((e) => Event.fromJson(e)).toList();
     } else {
@@ -53,7 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final TextEditingController controller = TextEditingController();
 
-  // Data moved outside the build method
   final List<QuickAccessItem> _quickAccessItems = [];
 
   void _onSearchChanged(String value) {}
@@ -71,7 +68,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _loadData() {
-    // Quick Access Items
     _quickAccessItems.addAll([
       QuickAccessItem(
         title: "Colleges",
@@ -258,7 +254,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Today's Events",
+                      "Latest News and Events",
                       style: TextStyle(
                         fontSize: screenWidth * 0.05,
                         fontWeight: FontWeight.bold,
@@ -289,7 +285,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   future: fetchEvents(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      // While waiting, show your custom loading indicator
                       return Center(
                         child: SizedBox(
                           height: 50,
@@ -310,7 +305,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     } else if (snapshot.hasError) {
-                      // Display errors from the backend or parsing issues
                       return Center(
                         child: Text(
                           'Error: ${snapshot.error}',
@@ -318,7 +312,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                      // Handle empty event list
                       return const Center(child: Text('No events found.'));
                     }
                     final eventsList = snapshot.data!;
@@ -341,8 +334,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   },
-                
-                 
+
+
                 ),
                 SizedBox(height: screenHeight * 0.03125),
                 Row(
@@ -382,7 +375,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 Padding(
                   padding: EdgeInsets.all(screenWidth * 0.0125),
                   child: Column(
-                    // Use ListView.builder for dynamic lists
                     children: List.generate(5, (index) {
                       final item = services[index];
 

@@ -36,8 +36,8 @@ final buildings = [
     location: "Central Campus, Building A",
     hours: "Mon-Sat: 24/7 access",
     icon: CupertinoIcons.book,
-    lat: 9.4095,
-    lng: 42.0407,
+    lat: 9.422984073151095,
+    lng: 42.034021303129336,
   ),
   Location(
     name: "LAW Library",
@@ -45,8 +45,8 @@ final buildings = [
     location: "Central Campus, Building A",
     hours: "Mon-Fri: 8:00 AM - 10:00 PM",
     icon: CupertinoIcons.book,
-    lat: 9.4097,
-    lng: 42.0410,
+    lat: 9.420571993600314,
+    lng: 42.03492765942484,
   ),
   Location(
     name: "CCI College",
@@ -54,8 +54,8 @@ final buildings = [
     location: "North Campus, Building B",
     hours: "Mon-Fri: 7:00 AM - 11:00 PM",
     icon: CupertinoIcons.device_laptop,
-    lat: 9.4109,
-    lng: 42.0382,
+    lat: 9.421713361423748,
+    lng: 42.03313723600998,
   ),
   Location(
     name: "Student Union",
@@ -63,8 +63,8 @@ final buildings = [
     location: "Central Campus",
     hours: "24/7 access",
     icon: CupertinoIcons.group,
-    lat: 9.4091,
-    lng: 42.0404,
+    lat: 9.423706616796455,
+    lng: 42.033915862551225,
   ),
   Location(
     name: "Afran Kalo Hall",
@@ -81,17 +81,17 @@ final buildings = [
     location: "Campus entry",
     hours: "Privileges Access",
     icon: CupertinoIcons.home,
-    lat: 9.4069,
-    lng: 42.0399,
+    lat: 9.42037889794694, 
+    lng:42.03719183663422,
   ),
   Location(
-    name: "Old Afran Kallo",
+    name: "Auditorium Kallo",
     type: "Hall",
     location: "around classrooms",
     hours: "24/7 Access",
     icon: CupertinoIcons.home,
-    lat: 9.4112,
-    lng: 42.0400,
+    lat:9.422640859650464, 
+    lng:42.03331803881942
   ),
 ];
 
@@ -112,17 +112,17 @@ final buildings = [
     location: "Male dorms last building",
     hours: "24/7 Access",
     icon: CupertinoIcons.home,
-    lat: 9.4083,
-    lng: 42.0414,
+    lat:  9.4253140063867, 
+    lng: 42.03259902914729,
   ),
   Location(
-    name: "SAT",
+    name: "SAT 1",
     type: "MALE Dorm",
     location: "Besides Wing",
     hours: "24/7 Access",
     icon: CupertinoIcons.home,
-    lat: 9.4089,
-    lng: 42.0405,
+    lat: 9.425686809204064, 
+    lng:42.03338586075698,
   ),
   Location(
     name: "DMC 1,2",
@@ -130,8 +130,8 @@ final buildings = [
     location: "Back of female dorms",
     hours: "24/7 Access",
     icon: CupertinoIcons.home,
-    lat: 9.4092,
-    lng: 42.0418,
+    lat: 9.426324775165874, 
+    lng: 42.034099546715574,
   ),
   Location(
     name: "WHITE HOUSE",
@@ -139,8 +139,8 @@ final buildings = [
     location: "North Campus",
     hours: "24/7 Access",
     icon: CupertinoIcons.home,
-    lat: 9.4107,
-    lng: 42.0394,
+    lat: 9.424786476149256, 
+    lng: 42.03398577428328,
   ),
   Location(
     name: "QUEEN 1,2,3",
@@ -148,8 +148,8 @@ final buildings = [
     location: "Dorms compound end point",
     hours: "24/7 Access",
     icon: CupertinoIcons.home,
-    lat: 9.4113,
-    lng: 42.0391,
+    lat: 9.424865702016291, 
+    lng: 42.03365616885986,
   ),
   Location(
     name: "Building 1,2,3",
@@ -157,8 +157,8 @@ final buildings = [
     location: "Around Main Library",
     hours: "24/7 Access",
     icon: CupertinoIcons.home,
-    lat: 9.4098,
-    lng: 42.0402,
+    lat: 9.423910038761996, 
+    lng: 42.03407444986679,
   ),
   Location(
     name: "Masters",
@@ -166,8 +166,8 @@ final buildings = [
     location: "Beside CCI college",
     hours: "24/7 Access",
     icon: CupertinoIcons.home,
-    lat: 9.4113,
-    lng: 42.0379,
+    lat: 9.422421245489833,
+    lng:  42.03262552454324,
   ),
 ];
 
@@ -179,8 +179,8 @@ final buildings = [
     location: "Student Center, Floor 1",
     hours: "Mon-Fri: 7:00 AM - 8:00 PM",
     icon: Icons.restaurant,
-    lat: 9.4093,
-    lng: 42.0406,
+    lat: 9.423639847086147, 
+    lng: 42.034999671072256,
   ),
   Location(
     name: "SENIOR CHRISTIAN",
@@ -188,8 +188,8 @@ final buildings = [
     location: "Student Center, Floor 1",
     hours: "Mon-Fri: 7:00 AM - 8:00 PM",
     icon: Icons.restaurant,
-    lat: 9.4100,
-    lng: 42.0413,
+    lat: 9.42419800353489, 
+    lng: 42.03514450536468,
   ),
   Location(
     name: "FRESH CHRISTIAN",
@@ -197,8 +197,8 @@ final buildings = [
     location: "Student Center",
     hours: "Mon-Fri: 7:00 AM - 8:00 PM",
     icon: Icons.restaurant,
-    lat: 9.4120,
-    lng: 42.0389,
+    lat: 9.423653272638399, 
+    lng: 42.03205016564241,
   ),
   Location(
     name: "KT",
@@ -206,8 +206,8 @@ final buildings = [
     location: "SSA (stadium)",
     hours: "Mon-Fri: 7:00 AM - 8:00 PM",
     icon: Icons.restaurant,
-    lat: 9.4116,
-    lng: 42.0385,
+    lat: 9.425427436688524, 
+    lng:42.03043858791445,
   ),
   Location(
     name: "KIRU",
@@ -215,8 +215,8 @@ final buildings = [
     location: "AMEL 1 floor",
     hours: "Mon-Fri: 7:00 AM - 8:00 PM",
     icon: Icons.restaurant,
-    lat: 9.4084,
-    lng: 42.0413,
+    lat: 9.425746197558931, 
+    lng: 42.03290423000783,
   ),
   Location(
     name: "WOLLEGA",
@@ -224,8 +224,8 @@ final buildings = [
     location: "behind Oromia",
     hours: "Mon-Fri: 7:00 AM - 8:00 PM",
     icon: Icons.restaurant,
-    lat: 9.4108,
-    lng: 42.0409,
+    lat: 9.423724377385248, 
+    lng:42.03283433862972,
   ),
   Location(
     name: "Wing",
@@ -233,8 +233,8 @@ final buildings = [
     location: "Wing, Floor 1",
     hours: "Mon-Fri: 7:00 AM - 8:00 PM",
     icon: Icons.restaurant,
-    lat: 9.4086,
-    lng: 42.0407,
+    lat: 9.424880333897882, 
+    lng: 42.03322512839619
   ),
   Location(
     name: "Oromia",
@@ -242,8 +242,8 @@ final buildings = [
     location: "around Square",
     hours: "Mon-Fri: 7:00 AM - 8:00 PM",
     icon: Icons.restaurant,
-    lat: 9.4106,
-    lng: 42.0408,
+    lat: 9.423969880918872, 
+    lng:42.03286897184962
   ),
   Location(
     name: "DMC",
@@ -251,8 +251,8 @@ final buildings = [
     location: "DMC, Floor 1",
     hours: "Mon-Fri: 7:00 AM - 8:00 PM",
     icon: Icons.restaurant,
-    lat: 9.4091,
-    lng: 42.0415,
+    lat: 9.426447651696096, 
+    lng:42.03436173237623
   ),
   Location(
     name: "WOLLEGA CAFE",
@@ -260,8 +260,8 @@ final buildings = [
     location: "Student Center, Floor 1",
     hours: "Mon-Fri: 7:00 AM - 8:00 PM",
     icon: Icons.restaurant,
-    lat: 9.4095,
-    lng: 42.0409,
+    lat: 9.423669105073698, 
+    lng:42.03274358014062
   ),
     ];
 
