@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hu_guide/Screens/%20Colleges%20Screens/College_Screen.dart';
-import 'package:hu_guide/Screens/Clubs Screens/Club_Screen.dart';
+import 'package:hu_guide/Screens/Clubs%20Screens/Club_Screen.dart';
 import 'package:hu_guide/Screens/Main%20Screens/Map.dart';
 import 'package:hu_guide/Screens/events%20Screens/Events_screen.dart';
 import 'package:hu_guide/Screens/srvices%20screens/cafteria.dart';
 import 'package:hu_guide/Screens/srvices%20screens/services_screen.dart';
 import 'package:hu_guide/models/services_model.dart';
 import 'package:hu_guide/Screens/srvices%20screens/service_detail_screen.dart';
-import 'package:hu_guide/widgets/event_dard.dart';
+import 'package:hu_guide/widgets/event_card.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:hu_guide/models/events_model.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:hu_guide/widgets/event_service.dart';
+import 'package:hu_guide/Screens/Main Screens/search_screen.dart';
 
 class QuickAccessItem {
   final String title;
@@ -36,35 +36,47 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Future<List<Event>> fetchEvents() async {
-    final response = await http.get(
-      Uri.parse('http://192.168.137.122:8000/api/events/'),
-    );
+  final EventService service = EventService(
+    csvUrl:
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuN_s5dEI2CQlk0lagEvwfwX0wcmDLL6wbniudoChnTW1jtb9OTJdSsZlLtHABrqQxOHzBIWbBjFfK/pub?output=csv&gid=0',
+  );
 
-    if (response.statusCode == 200) {
-      final List<dynamic> eventsJson = json.decode(response.body);
-      return eventsJson.map((e) => Event.fromJson(e)).toList();
-    } else {
-      throw Exception('Failed to load events');
-    }
-  }
+  late Future<List<Event>> _futureEvents;
 
   final TextEditingController controller = TextEditingController();
 
   final List<QuickAccessItem> _quickAccessItems = [];
 
-  void _onSearchChanged(String value) {}
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
   @override
   void initState() {
     super.initState();
     _loadData();
+    _futureEvents = service.fetchEvents();
+
+    controller.addListener(() {
+      final query = controller.text.trim();
+      if (query.isNotEmpty) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => Search_Results(query: query),
+          ),
+        );
+      }
+    });
+  }
+
+  Future<void> _refreshEvents() async {
+    setState(() {
+      _futureEvents = service.fetchEvents();
+    });
+  }
+
+  @override
+  void dispose() {
+    controller.removeListener(() {});
+    controller.dispose();
+    super.dispose();
   }
 
   void _loadData() {
@@ -137,16 +149,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.02),
+
                 TextFormField(
                   controller: controller,
-                  onChanged: _onSearchChanged,
                   decoration: InputDecoration(
-                    label: Text(
-                      'Search',
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    hintText: 'Search',
+                    hintStyle: const TextStyle(
+                      color: Colors.black54,
+                      fontWeight: FontWeight.bold,
                     ),
                     filled: true,
                     fillColor: Colors.grey.shade200,
@@ -154,12 +164,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       CupertinoIcons.search,
                       color: Colors.black54,
                     ),
+                    suffixIcon: controller.text.isNotEmpty
+                        ? IconButton(
+                            icon: const Icon(Icons.clear, color: Colors.black54),
+                            onPressed: () {
+                              controller.clear();
+                            },
+                          )
+                        : null,
                     border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                       borderSide: BorderSide.none,
                     ),
                   ),
                 ),
+
                 SizedBox(height: screenHeight * 0.02),
                 Align(
                   alignment: Alignment.topLeft,
@@ -261,81 +280,74 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.black,
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Events()),
-                        );
-                      },
-                      child: Text(
-                        "View All",
-                        style: TextStyle(
-                          fontSize: screenWidth * 0.035,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.pinkAccent,
+                    Row(
+                      children: [
+                        IconButton(onPressed: _refreshEvents, icon: Icon(Icons.refresh)),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Events()),
+                            );
+                          },
+                          child: Text(
+                            "View All",
+                            style: TextStyle(
+                              fontSize: screenWidth * 0.035,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.pinkAccent,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),
 
-                SizedBox(height: screenHeight * 0.02),
-                FutureBuilder<List<Event>>(
-                  future: fetchEvents(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
-                        child: SizedBox(
-                          height: 50,
-
+                SizedBox(
+                  height: screenHeight * 0.18,
+                  child: FutureBuilder<List<Event>>(
+                    future: _futureEvents,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
                           child: LoadingIndicator(
-                            colors: [
-                              Colors.black,
-                              Colors.red,
-                              Colors.green,
-                              Colors.blue,
-                              Colors.yellow,
-                              Colors.orange,
-                              Colors.purple,
-                              Colors.pink,
-                            ],
-                            indicatorType: Indicator.lineSpinFadeLoader,
+                            indicatorType: Indicator.cubeTransition,
+                            colors: [Colors.orange, Colors.blue],
                           ),
-                        ),
-                      );
-                    } else if (snapshot.hasError) {
-                      return Center(
-                        child: Text(
-                          'Error: ${snapshot.error}',
-                          style: const TextStyle(color: Colors.red),
-                        ),
-                      );
-                    } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                      return const Center(child: Text('No events found.'));
-                    }
-                    final eventsList = snapshot.data!;
-                    return SafeArea(
-                      child: RefreshIndicator(
-                        onRefresh: () async {
-                          setState(() {});
+                        );
+                      } else if (snapshot.hasError) {
+                        return Center(
+                          child: Text(
+                            'Error: check your internet',
+                            style: const TextStyle(color: Colors.red),
+                          ),
+                        );
+                      } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                        return const Center(child: Text('No events found.'));
+                      }
+
+                      final eventsList = snapshot.data!;
+
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        itemCount: eventsList.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: EdgeInsets.only(right: screenWidth * 0.03),
+                            child: SizedBox(
+                              width: screenWidth * 0.7,
+                              child: EventCard(
+                                event: eventsList[index],
+                                imageIndex: index,
+                              ),
+                            ),
+                          );
                         },
-                        child: SingleChildScrollView(
-                          physics: const BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: eventsList
-                                .map((event) => EventCard(event: event))
-                                .toList(
-                                  growable: true
-                                ),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-
-
+                      );
+                    },
+                  ),
                 ),
                 SizedBox(height: screenHeight * 0.03125),
                 Row(

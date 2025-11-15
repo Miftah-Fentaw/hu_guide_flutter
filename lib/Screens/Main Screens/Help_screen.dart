@@ -18,37 +18,37 @@ class _HelpPageState extends State<HelpPage> {
   FaqItem(
     question: "📱 How do I register using the portal or in person?",
     answer:
-        "To register online, log into your student portal, go to the 'Registration' section, select your courses, and submit before the deadline. For in-person registration, visit the registrar’s office with your student ID and course selections.",
+        "To register online, log into your student portal '10.230.5.15' it only works with the university wifi, go to the 'Registration' section, select your courses, and submit before the deadline. For in-person registration, visit the registrar’s office with your student ID and necessary informations.",
   ),
   FaqItem(
     question: "🏫 Where can I find study resources?",
     answer:
-        "Access resources via the 'Resources' section in UniConnect or browse online here: [University Resource Hub](https://www.universitywebsite.edu/resources). You can filter by college, course, or semester for tailored materials.",
+        "Access resources via the 'Resources' section in HU GUIDE or browse online here: [University Resource Hub](https://www.haramayauniversity.edu/resources). You can filter by college, course, or semester for tailored materials.",
   ),
   FaqItem(
     question: "💬 How do I give feedback?",
     answer:
-        "Open the 'Feedback' page from the app menu. Enter your subject and message, then click Submit. All feedback is sent directly to the admin team and reviewed regularly.",
+        "Open the 'Feedback' page from the Activity menu. Enter your subject and message, then click Submit. All feedback is sent directly to the admin team and reviewed regularly.",
   ),
   FaqItem(
     question: "📅 How can I stay updated with university news?",
     answer:
-        "Visit the 'New and Events' page in the app for latest announcements, events, and opportunities. Enable notifications in settings to receive instant updates on important campus activities.",
+        "there are three main option using telegram channel HARAMAYA UNIVERSITY FRESHMAN , HU GENERAL , HARAMAYA INFFO and there many more",
   ),
   FaqItem(
     question: "👨‍🎓 What’s special for Freshman and GC Students?",
     answer:
-        "Freshman students get beginner guides, campus maps, and orientation tips. GC (Graduating Class) students will soon have access to internship listings, thesis templates, and final exam prep materials.",
+        "Freshman students get beginner guides, campus maps, and orientation tips using the HU FRESH app built by our campus students. and for GC (Graduating Class) students will soon have access to internship listings, thesis templates, and final exam prep materials but we are still working on it.",
   ),
   FaqItem(
     question: "❌ The chatbot is not working?",
     answer:
-        "If the chatbot is unresponsive, check your internet connection first. If the issue persists, restart the app or contact support via the 'Help & Support' section.",
+        "If the chatbot is unresponsive, check your internet connection first. If the issue persists, restart the app or submit the specific problem using the feedback section.",
   ),
   FaqItem(
     question: "💻 How can I contact the developer?",
     answer:
-        "You can contact the developer via email at support@uniconnect.edu or open the 'Contact Developer' option in the app to submit feedback directly.",
+        "You can contact the developer via email at miftahfentawdev@gmail.com or open the 'Contact Developer' option in the app to submit feedback directly.",
   ),
 ];
 
@@ -59,7 +59,7 @@ class _HelpPageState extends State<HelpPage> {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blue, Colors.indigo],
+            colors: [Colors.orangeAccent, Colors.amber],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -67,7 +67,6 @@ class _HelpPageState extends State<HelpPage> {
         child: SafeArea(
           child: Column(
             children: [
-              // Header
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
@@ -91,7 +90,6 @@ class _HelpPageState extends State<HelpPage> {
                 ),
               ),
 
-              // Body
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.all(16),

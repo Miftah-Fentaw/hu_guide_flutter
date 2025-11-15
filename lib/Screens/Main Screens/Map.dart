@@ -49,7 +49,6 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
     return Scaffold(
       body: Column(
         children: [
-          // Header
           Padding(
             padding: const EdgeInsets.fromLTRB(5, 30, 16, 16),
             child: Row(
@@ -145,7 +144,6 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
             ),
           ),
 
-          // Map View
           Expanded(
             flex: 3,
             child: ClipRRect(
@@ -180,12 +178,12 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                place["name"], // Your place name
+                                place["name"],
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                   color: place["color"],
-                                  backgroundColor: Colors.transparent, // optional to make text readable
+                                  backgroundColor: Colors.transparent,
                                 ),
                               ),
                               Icon(
@@ -204,7 +202,6 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
             ),
           ),
 
-          // Place List Section
         ],
       ),
     );

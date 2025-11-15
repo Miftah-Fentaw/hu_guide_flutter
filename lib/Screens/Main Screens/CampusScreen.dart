@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hu_guide/Screens/Main%20Screens/Map.dart';
 import 'package:hu_guide/models/campus_models.dart';
-import 'package:hu_guide/models/map_model.dart';
-
 
 class LocationCard extends StatelessWidget {
   final Location location;
-   final Map<String, dynamic>? focusPlace;
+  final Map<String, dynamic>? focusPlace;
   const LocationCard({super.key, required this.location, this.focusPlace});
 
   Color getStatusColor(String? status, BuildContext context) {
@@ -14,7 +12,6 @@ class LocationCard extends StatelessWidget {
     if (status == "closed") return Colors.redAccent;
     return Colors.grey;
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -139,32 +136,32 @@ class LocationCard extends StatelessWidget {
                   ),
                 ],
                 const SizedBox(height: 10),
-               TextButton(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => CampusMapScreen(location: location),
-      ),
-    );
-  },
-  style: TextButton.styleFrom(
-    backgroundColor: Colors.orange.withOpacity(0.1),
-    foregroundColor: Colors.orangeAccent,
-    padding: const EdgeInsets.symmetric(
-      horizontal: 14,
-      vertical: 6,
-    ),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(8),
-    ),
-  ),
-  child: const Text(
-    "View on map",
-    style: TextStyle(fontWeight: FontWeight.w600),
-  ),
-),
-
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            CampusMapScreen(location: location),
+                      ),
+                    );
+                  },
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.orange.withOpacity(0.1),
+                    foregroundColor: Colors.orangeAccent,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 6,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: const Text(
+                    "View on map",
+                    style: TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                ),
               ],
             ),
           ),
@@ -187,8 +184,6 @@ class _CampusScreenState extends State<CampusScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(

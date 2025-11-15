@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hu_guide/Screens/Main%20Screens/ActivitiesScreen.dart';
-import 'package:hu_guide/Screens/Main%20Screens/CampusScreen.dart'; // Corrected import path
+import 'package:hu_guide/Screens/Main%20Screens/CampusScreen.dart'; 
 import 'package:hu_guide/Screens/Main Screens/MoreScreen.dart';
 import 'package:hu_guide/Screens/Main%20Screens/ChatBot.dart';
 import 'package:hu_guide/Screens/Main Screens/SettingsScreen.dart';
+import 'package:hu_guide/Screens/Main%20Screens/splash_screen.dart';
 import 'Screens/Main Screens/HomeScreen.dart';
 
 void main() async {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'HU GUIDE',
-      home: const MyHomePage(),
+      home: SplashScreen(),
     );
   }
 }

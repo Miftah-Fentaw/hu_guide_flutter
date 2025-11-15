@@ -1,39 +1,15 @@
-import 'package:flutter/material.dart';
-
 class Event {
-  final String title;
-  final DateTime date;
-  final String time;
-  final String location;
-  final String organizer;
-  final String description;
-  final List<String> tags;
-  final String imagePath;
-  final bool isFeatured;
+  final String Title;
+  final String Date;
+  final String Place;
 
-  Event({
-    required this.title,
-    required this.date,
-    required this.time,
-    required this.location,
-    required this.organizer,
-    required this.description,
-    required this.tags,
-    required this.imagePath,
-    required this.isFeatured,
-  });
+  Event({required this.Title, required this.Date, required this.Place});
 
-  factory Event.fromJson(Map<String, dynamic> json) {
+  factory Event.fromCsv(List<dynamic> row) {
     return Event(
-      title: json['title'],
-      date: DateTime.parse(json['date']),
-      time: json['time'],
-      location: json['location'],
-      organizer: json['organizer'],
-      description: json['description'],
-      tags: List<String>.from(json['tags']),
-      imagePath: json['imagePath'] ?? '',
-      isFeatured: json['isFeatured'],
+      Title: row[0].toString().trim(),
+      Date: row[1].toString().trim(),
+      Place: row[2].toString().trim(),
     );
   }
 }

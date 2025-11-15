@@ -11,12 +11,31 @@ class Clubs extends StatefulWidget {
 }
 
 class _ClubsState extends State<Clubs> {
-  final TextEditingController controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
+  List<Organisation> _filteredClubs = [];
 
-  void _onSearchChanged(String value) {}
+  @override
+  void initState() {
+    super.initState();
+    _filteredClubs = clubs;
+    _controller.addListener(_onSearch);
+  }
 
+  void _onSearch() {
+    final query = _controller.text.trim().toLowerCase();
+    setState(() {
+      _filteredClubs = clubs.where((club) {
+        return club.name.toLowerCase().contains(query) ||
+            club.president.toLowerCase().contains(query) ||
+            club.actions.any((action) => action.toLowerCase().contains(query));
+      }).toList();
+    });
+  }
+
+  @override
   void dispose() {
-    controller.dispose();
+    _controller.removeListener(_onSearch);
+    _controller.dispose();
     super.dispose();
   }
 
@@ -74,257 +93,211 @@ class _ClubsState extends State<Clubs> {
 
     final totalMembers = clubs
         .map((club) => club.number_of_students)
-        .reduce((value, element) => value + element);
+        .reduce((a, b) => a + b);
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Container(
+        child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: screenWidth * 0.05,
             vertical: screenHeight * 0.02,
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Clubs & Associations',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: screenWidth * 0.05,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(
-                          Colors.grey.shade200,
-                        ),
-                      ),
-                      icon: Icon(CupertinoIcons.xmark, color: Colors.black),
-                    ),
-                  ],
-                ),
-
-                SizedBox(height: screenHeight * 0.02),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Students and university movements,organisations...',
-                    style: TextStyle(fontSize: screenWidth * 0.0375),
-                  ),
-                ),
-                SizedBox(height: screenHeight * 0.02),
-                TextFormField(
-                  controller: controller,
-                  onChanged: _onSearchChanged,
-                  decoration: InputDecoration(
-                    label: const Text(
-                      'Search clubs,associations...',
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    filled: true,
-                    fillColor: Colors.grey.shade200,
-                    prefixIcon: const Icon(
-                      CupertinoIcons.search,
-                      color: Colors.black54,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                      borderSide: BorderSide.none,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  children: [
-                    _buildStatCard(
-                      context,
-                      icon: CupertinoIcons.group_solid,
-                      value: clubs.length.toString(),
-                      label: 'Clubs',
-                    ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.025),
-                    _buildStatCard(
-                      context,
-                      icon: CupertinoIcons.group,
-                      value: '5',
-                      label: 'Association',
-                    ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.025),
-                    _buildStatCard(
-                      context,
-                      icon: CupertinoIcons.person_2_fill,
-                      value: '${totalMembers}+',
-                      label: 'Members',
-                    ),
-                  ],
-                ),
-                SizedBox(height: screenHeight * 0.02),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
                     'Clubs & Associations',
                     style: TextStyle(
-                      fontSize: screenWidth * 0.06,
+                      fontSize: screenWidth * 0.05,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(CupertinoIcons.xmark),
+                    style: IconButton.styleFrom(backgroundColor: Colors.grey.shade200),
+                  ),
+                ],
+              ),
+              SizedBox(height: screenHeight * 0.02),
+
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Students and university movements, organisations...',
+                  style: TextStyle(fontSize: 14),
                 ),
-                SizedBox(height: screenHeight * 0.02),
-                Column(
-                  children: clubs.asMap().entries.map((entry) {
-                    final index = entry.key;
-                    final clubs = entry.value;
-                    return Container(
-                      width: double.infinity,
-                      margin: EdgeInsets.only(
-                        right: screenWidth * 0.0125,
-                        bottom: screenHeight * 0.0125,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white70,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                        border: Border.all(
-                          color: Colors.grey.shade200,
-                          width: 1.0,
+              ),
+              SizedBox(height: screenHeight * 0.02),
+
+              TextField(
+                controller: _controller,
+                decoration: InputDecoration(
+                  hintText: 'Search clubs, associations...',
+                  hintStyle: const TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),
+                  filled: true,
+                  fillColor: Colors.grey.shade200,
+                  prefixIcon: const Icon(CupertinoIcons.search, color: Colors.black54),
+                  suffixIcon: _controller.text.isNotEmpty
+                      ? IconButton(
+                          icon: const Icon(Icons.clear, color: Colors.black54),
+                          onPressed: () {
+                            _controller.clear();
+                            _onSearch();
+                          },
+                        )
+                      : null,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              Row(
+                children: [
+                  _buildStatCard(context, icon: CupertinoIcons.group_solid, value: clubs.length.toString(), label: 'Clubs'),
+                  SizedBox(width: screenWidth * 0.025),
+                  _buildStatCard(context, icon: CupertinoIcons.group, value: '5', label: 'Associations'),
+                  SizedBox(width: screenWidth * 0.025),
+                  _buildStatCard(context, icon: CupertinoIcons.person_2_fill, value: '${totalMembers}+', label: 'Members'),
+                ],
+              ),
+              SizedBox(height: screenHeight * 0.02),
+
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Clubs & Associations',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+              ),
+              SizedBox(height: screenHeight * 0.02),
+
+              Expanded(
+                child: _filteredClubs.isEmpty
+                    ? const Center(
+                        child: Text(
+                          'No clubs found',
+                          style: TextStyle(fontSize: 16, color: Colors.grey),
                         ),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(16),
-                              topRight: Radius.circular(16),
+                      )
+                    : ListView.builder(
+                        itemCount: _filteredClubs.length,
+                        itemBuilder: (context, index) {
+                          final club = _filteredClubs[index];
+                          return Container(
+                            width: double.infinity,
+                            margin: EdgeInsets.only(bottom: screenHeight * 0.0125),
+                            decoration: BoxDecoration(
+                              color: Colors.white70,
+                              borderRadius: BorderRadius.circular(16),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                              border: Border.all(color: Colors.grey.shade200, width: 1.0),
                             ),
-                            child: Image.asset(
-                              clubs.imagepath,
-                              height: screenHeight * 0.125,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(screenWidth * 0.025),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  '${clubs.name}',
-                                  style: TextStyle(
-                                    fontSize: screenWidth * 0.04,
-                                    fontWeight: FontWeight.bold,
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                                  child: Image.asset(
+                                    club.imagepath,
+                                    height: screenHeight * 0.125,
+                                    width: double.infinity,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (_, __, ___) => Container(
+                                      height: screenHeight * 0.125,
+                                      color: Colors.grey[300],
+                                      child: const Icon(Icons.group, size: 40),
+                                    ),
                                   ),
                                 ),
-                                SizedBox(height: screenHeight * 0.0075),
-                                Text(
-                                  '${clubs.About}',
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: screenWidth * 0.03,
-                                    color: Colors.black54,
-                                  ),
-                                ),
-                                SizedBox(height: screenHeight * 0.01),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Align(
-                                      alignment: Alignment.bottomLeft,
-                                      child: Row(
+
+                                Padding(
+                                  padding: EdgeInsets.all(screenWidth * 0.025),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        club.name,
+                                        style: TextStyle(
+                                          fontSize: screenWidth * 0.04,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: screenHeight * 0.0075),
+                                      Text(
+                                        club.About,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: screenWidth * 0.03,
+                                          color: Colors.black54,
+                                        ),
+                                      ),
+                                      SizedBox(height: screenHeight * 0.01),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Icon(
-                                            CupertinoIcons.group_solid,
-                                            color: Colors.black,
-                                            size: screenWidth * 0.045,
+                                          Row(
+                                            children: [
+                                              Icon(CupertinoIcons.group_solid, size: screenWidth * 0.045),
+                                              SizedBox(width: screenWidth * 0.01),
+                                              Text(
+                                                '${club.number_of_students} + members',
+                                                style: TextStyle(fontSize: screenWidth * 0.0375),
+                                              ),
+                                            ],
                                           ),
-                                          SizedBox(width: screenWidth * 0.01),
-                                          Text(
-                                            '${clubs.number_of_students} + members',
-                                            style: TextStyle(
-                                              fontSize: screenWidth * 0.0375,
-                                              color: Colors.black,
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (_) => ClubDetailScreen(club: club),
+                                                ),
+                                              );
+                                            },
+                                            style: TextButton.styleFrom(
+                                              backgroundColor: Colors.orange.withOpacity(0.3),
+                                              padding: EdgeInsets.symmetric(
+                                                horizontal: screenWidth * 0.035,
+                                                vertical: screenHeight * 0.0075,
+                                              ),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(8),
+                                              ),
+                                            ),
+                                            child: const Text(
+                                              "see more",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black45,
+                                              ),
                                             ),
                                           ),
                                         ],
                                       ),
-                                    ),
-                                    SizedBox(height: screenHeight * 0.01),
-                                    Align(
-                                      alignment: Alignment.bottomRight,
-                                      child: TextButton(
-                                        onPressed: () {},
-                                        style: TextButton.styleFrom(
-                                          backgroundColor: Colors.orange
-                                              .withOpacity(0.3),
-                                          foregroundColor: Colors.orangeAccent,
-                                          padding: EdgeInsets.symmetric(
-                                            horizontal: screenWidth * 0.035,
-                                            vertical: screenHeight * 0.0075,
-                                          ),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              8,
-                                            ),
-                                          ),
-                                        ),
-                                        child: TextButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ClubDetailScreen(
-                                                      club: clubs,
-                                                    ),
-                                              ),
-                                            );
-                                          },
-                                          child: Text(
-                                            "see more",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.black45,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
-                          ),
-                          SizedBox(height: screenHeight * 0.025),
-                        ],
+                          );
+                        },
                       ),
-                    );
-                  }).toList(),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

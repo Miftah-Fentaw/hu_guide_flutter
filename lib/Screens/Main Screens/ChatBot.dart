@@ -23,10 +23,6 @@ class _AiAssistantWebViewState extends State<AiAssistantWebView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text("HU AI Assistant"),
-      //   backgroundColor: Colors.pink[600],
-      // ),
       body: WebViewWidget(controller: _controller),
     );
   }

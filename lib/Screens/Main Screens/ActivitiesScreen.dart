@@ -5,6 +5,10 @@ import 'package:hu_guide/Screens/Clubs%20Screens/Club_Screen.dart';
 import 'package:hu_guide/Screens/events%20Screens/Events_screen.dart';
 import 'package:hu_guide/Screens/srvices%20screens/cafteria.dart';
 import 'package:hu_guide/models/clubs_model.dart';
+import 'package:hu_guide/widgets/event_service.dart';
+import 'package:hu_guide/widgets/event_card.dart';
+import 'package:hu_guide/models/events_model.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 
 class ActivitiesScreen extends StatefulWidget {
   const ActivitiesScreen({super.key});
@@ -14,6 +18,18 @@ class ActivitiesScreen extends StatefulWidget {
 }
 
 class _ActivitiesScreenState extends State<ActivitiesScreen> {
+  late Future<List<Event>> _futureEvents;
+  final EventService service = EventService(
+    csvUrl:
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuN_s5dEI2CQlk0lagEvwfwX0wcmDLL6wbniudoChnTW1jtb9OTJdSsZlLtHABrqQxOHzBIWbBjFfK/pub?output=csv&gid=0',
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    _futureEvents = service.fetchEvents();
+  }
+
   void onNavigate(String route) {
     debugPrint("Navigating to: $route");
   }
@@ -22,7 +38,6 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -118,18 +133,57 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
             SizedBox(height: screenHeight * 0.04),
 
             Text(
-              "Featured Today",
+              "Event Updates",
               style: TextStyle(
                 fontSize: screenWidth * 0.05,
                 fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
             ),
-            SizedBox(height: screenHeight * 0.015),
-            _FeaturedEventCard(
-              title: "Orientation Day",
-              timeLocation: "AFRANKALO HALL - Today at 2:30 PM",
+            SizedBox(height: screenHeight * 0.01),
+
+            SizedBox(
+              height: screenHeight * 0.18,
+              child: FutureBuilder<List<Event>>(
+                future: _futureEvents,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: LoadingIndicator(colors: [Colors.orange], indicatorType: Indicator.semiCircleSpin));
+                  } else if (snapshot.hasError) {
+                    return Center(
+                      child: Text(
+                        'Error: check your internet',
+                        style: const TextStyle(color: Colors.red),
+                      ),
+                    );
+                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return const Center(child: Text('No featured events.'));
+                  }
+
+                  final eventsList = snapshot.data!;
+
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemCount: eventsList.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(right: screenWidth * 0.03),
+                        child: SizedBox(
+                          width: screenWidth * 0.7,
+                          child: EventCard(
+                            event: eventsList[index],
+                            imageIndex: index,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
             ),
-            SizedBox(height: screenHeight * 0.035),
+
+            SizedBox(height: screenHeight * 0.03),
 
             Text(
               "Popular Clubs",
@@ -308,70 +362,6 @@ class _ActivityCard extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _FeaturedEventCard extends StatelessWidget {
-  final String title;
-  final String timeLocation;
-
-  const _FeaturedEventCard({required this.title, required this.timeLocation});
-
-  @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: screenHeight * 0.1625,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: Image.asset("assets/event1.png").image,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(screenWidth * 0.04),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.04,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: screenHeight * 0.005),
-                Text(
-                  timeLocation,
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontSize: screenWidth * 0.0325,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

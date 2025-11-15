@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hu_guide/Screens/Main%20Screens/Help_screen.dart';
+import 'package:hu_guide/Screens/Main%20Screens/feedback_screen.dart';
+import 'package:hu_guide/Screens/Main%20Screens/lost_and_found_screen.dart';
+import 'package:hu_guide/Screens/Main%20Screens/resource_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:hu_guide/Screens/ComingSoonScreen.dart';
 import 'package:hu_guide/Screens/Main%20Screens/AboutScreen.dart';
 
 class MoreScreen extends StatefulWidget {
@@ -281,13 +283,11 @@ class _MoreScreenState extends State<MoreScreen> {
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ComingSoonScreen(
-                          title: 'Lost & Found',
-                          icon: Icons.search_outlined,
+                        builder: (context) => const LostAndFoundScreen(),
                         ),
                       ),
                     ),
-                  ),
+                  
                   buildFeatureCard(
                     icon: Icons.menu_book_outlined,
                     title: "Resources",
@@ -296,10 +296,7 @@ class _MoreScreenState extends State<MoreScreen> {
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ComingSoonScreen(
-                          title: 'Resources',
-                          icon: Icons.menu_book_outlined,
-                        ),
+                        builder: (context) =>  ResourcesScreen(),
                       ),
                     ),
                   ),
@@ -311,10 +308,7 @@ class _MoreScreenState extends State<MoreScreen> {
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ComingSoonScreen(
-                          title: 'Support',
-                          icon: Icons.mail_outline,
-                        ),
+                        builder: (context) => const FeedbackScreen(),
                       ),
                     ),
                   ),
