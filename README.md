@@ -18,9 +18,9 @@
 
 ## Screenshots
 
-| ![Screen 1](assets/screenshots/homescreen.png.png) | ![Screen 2](assets/screenshots/campusscreen.png.jpg.png) | ![Screen 3](assets/screenshots/chatbot.png.png) | ![Screen 4](assets/screenshots/clubs.png.png) |
+| ![Screen 1](assets/screenshots/homescreen.png) | ![Screen 2](assets/screenshots/campusscreen.png) | ![Screen 3](assets/screenshots/chatbot.png) | ![Screen 4](assets/screenshots/clubs.png) |
 |-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|
-| ![Screen 5](assets/screenshots/event.png.png) | ![Screen 6](assets/screenshots/more.png.png) | ![Screen 7](assets/screenshots/map.png) | ![Screen 8](assets/screenshots/faq.png.png) |
+| ![Screen 5](assets/screenshots/event.png) | ![Screen 6](assets/screenshots/more.png) | ![Screen 7](assets/screenshots/map.png) | ![Screen 8](assets/screenshots/faq.png) |
 
 
 
