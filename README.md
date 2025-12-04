@@ -15,12 +15,14 @@
 
 ---
 
-## 📱 Screenshots
 
-<img src="assets/screenshots/homescreen.png" alt="Home Screen" width="400"/>
-<img src="assets/screenshots/campusscreen.png" alt="Campus Map" width="400"/>
-<img src="assets/screenshots/chatbot.png" alt="Events" width="400"/>
-<img src="assets/screenshots/more.png" alt="ChatBot" width="400"/>
+## Screenshots
+
+| ![Screen 1](assets/screenshots/homescreen.png.png) | ![Screen 2](assets/screenshots/campusscreen.png.jpg.png) | ![Screen 3](assets/screenshots/chatbot.png.png) | ![Screen 4](assets/screenshots/clubs.png.png) |
+|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|
+| ![Screen 5](assets/screenshots/event.png.png) | ![Screen 6](assets/screenshots/more.png.png) | ![Screen 7](assets/screenshots/map.png) | ![Screen 8](assets/screenshots/faq.png.png) |
+
+
 
 
 ---
