@@ -31,7 +31,7 @@
 
 - **Flutter**: Cross-platform app development  
 - **Dart**: Programming language  
-- **Firebase**: Backend services (authentication, database)  
+- **Firebase**: Used Google sheet for events, lost and found and related features
 - **Figma**: UI/UX design  
 
 ---
@@ -41,7 +41,7 @@
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/Miftah-Fentaw/hu-guide.git
+git clone https://github.com/Miftah-Fentaw/hu_guide_flutter.git
 cd hu-guide
 flutter pub get
 flutter run
