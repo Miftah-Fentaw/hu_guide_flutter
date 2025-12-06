@@ -15,6 +15,11 @@
 
 ---
 
+## 🎥 Demo Video
+
+[![HU Guide Demo](assets/huguide.png.png)](assets/hu_guide.mp4)
+
+---
 
 ## Screenshots
 
