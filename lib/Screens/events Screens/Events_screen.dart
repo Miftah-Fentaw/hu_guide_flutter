@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:hu_guide/credentials.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:hu_guide/models/events_model.dart';
 import 'package:hu_guide/widgets/event_screen_card.dart';
@@ -15,7 +16,7 @@ class Events extends StatefulWidget {
 class _EventsState extends State<Events> {
   final EventService service = EventService(
     csvUrl:
-        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuN_s5dEI2CQlk0lagEvwfwX0wcmDLL6wbniudoChnTW1jtb9OTJdSsZlLtHABrqQxOHzBIWbBjFfK/pub?output=csv&gid=0',
+        evetntskey,
   );
 
   late Future<List<Event>> _futureEvents;

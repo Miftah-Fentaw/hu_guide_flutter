@@ -16,8 +16,8 @@ class MoreScreen extends StatefulWidget {
 
 class _MoreScreenState extends State<MoreScreen> {
   Future<void> _launchTelegram() async {
-    final Uri tgApp = Uri.parse('tg://resolve?domain=yourusername');
-    final Uri tgWeb = Uri.parse('https://t.me/yourusername');
+    final Uri tgApp = Uri.parse('tg://resolve?domain=Miftah_Fentaw');
+    final Uri tgWeb = Uri.parse('https://t.me/Miftah_Fentaw');
 
     try {
       if (await canLaunchUrl(tgApp)) {

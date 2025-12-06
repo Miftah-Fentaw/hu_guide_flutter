@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:hu_guide/credentials.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:hu_guide/models/map_model.dart';
 import 'package:hu_guide/models/campus_models.dart';
@@ -159,10 +160,10 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
                 children: [
                   TileLayer(
                     urlTemplate:
-                        'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWlmdGFoLWRldiIsImEiOiJjbWgzcncwNXAwMzA3MmtxbnpiNTNraTh6In0.b38pKFNBDPM58ktI8SXOkA',
+                        map_key,
                     additionalOptions: {
                       'accessToken':
-                          'pk.eyJ1IjoibWlmdGFoLWRldiIsImEiOiJjbWgzcncwNXAwMzA3MmtxbnpiNTNraTh6In0.b38pKFNBDPM58ktI8SXOkA',
+                          map_access_token,
                     },
                     subdomains: const ['a', 'b', 'c'],
                   ),

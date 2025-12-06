@@ -4,6 +4,7 @@ import 'package:hu_guide/Screens/Clubs%20Screens/Club_Detail_Screen.dart';
 import 'package:hu_guide/Screens/Clubs%20Screens/Club_Screen.dart';
 import 'package:hu_guide/Screens/events%20Screens/Events_screen.dart';
 import 'package:hu_guide/Screens/srvices%20screens/cafteria.dart';
+import 'package:hu_guide/credentials.dart';
 import 'package:hu_guide/models/clubs_model.dart';
 import 'package:hu_guide/widgets/event_service.dart';
 import 'package:hu_guide/widgets/event_card.dart';
@@ -20,9 +21,7 @@ class ActivitiesScreen extends StatefulWidget {
 class _ActivitiesScreenState extends State<ActivitiesScreen> {
   late Future<List<Event>> _futureEvents;
   final EventService service = EventService(
-    csvUrl:
-        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuN_s5dEI2CQlk0lagEvwfwX0wcmDLL6wbniudoChnTW1jtb9OTJdSsZlLtHABrqQxOHzBIWbBjFfK/pub?output=csv&gid=0',
-  );
+    csvUrl: evetntskey,);
 
   @override
   void initState() {
@@ -148,7 +147,12 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                 future: _futureEvents,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: LoadingIndicator(colors: [Colors.orange], indicatorType: Indicator.semiCircleSpin));
+                    return const Center(
+                      child: LoadingIndicator(
+                        colors: [Colors.orange],
+                        indicatorType: Indicator.semiCircleSpin,
+                      ),
+                    );
                   } else if (snapshot.hasError) {
                     return Center(
                       child: Text(

@@ -6,6 +6,7 @@ import 'package:hu_guide/Screens/Main%20Screens/Map.dart';
 import 'package:hu_guide/Screens/events%20Screens/Events_screen.dart';
 import 'package:hu_guide/Screens/srvices%20screens/cafteria.dart';
 import 'package:hu_guide/Screens/srvices%20screens/services_screen.dart';
+import 'package:hu_guide/credentials.dart';
 import 'package:hu_guide/models/services_model.dart';
 import 'package:hu_guide/Screens/srvices%20screens/service_detail_screen.dart';
 import 'package:hu_guide/widgets/event_card.dart';
@@ -37,9 +38,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final EventService service = EventService(
-    csvUrl:
-        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuN_s5dEI2CQlk0lagEvwfwX0wcmDLL6wbniudoChnTW1jtb9OTJdSsZlLtHABrqQxOHzBIWbBjFfK/pub?output=csv&gid=0',
-  );
+    csvUrl: evetntskey,);
 
   late Future<List<Event>> _futureEvents;
 
