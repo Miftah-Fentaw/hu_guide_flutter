@@ -17,7 +17,7 @@
 
 ## 🎥 Demo Video
 
-[![HU Guide Demo](assets/huguide.png.png)](assets/hu_guide.mp4)
+[![HU Guide Demo](assets/huguide.png)](assets/hu_guide.mp4)
 
 ---
 
