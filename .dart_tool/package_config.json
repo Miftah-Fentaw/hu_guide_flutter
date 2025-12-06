@@ -2,10 +2,10 @@
   "configVersion": 2,
   "packages": [
     {
-      "name": "_flutterfire_internals",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.63",
+      "name": "ansicolor",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/ansicolor-2.0.3",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.0"
     },
     {
       "name": "archive",
@@ -44,26 +44,14 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "cloud_firestore",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/cloud_firestore-6.0.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
-    },
-    {
-      "name": "cloud_firestore_platform_interface",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/cloud_firestore_platform_interface-7.0.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
-    },
-    {
-      "name": "cloud_firestore_web",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/cloud_firestore_web-5.0.3",
+      "name": "collection",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/collection-1.19.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
-      "name": "collection",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/collection-1.19.1",
+      "name": "convert",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/convert-3.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -72,6 +60,18 @@
       "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/crypto-3.0.6",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "csslib",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/csslib-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "csv",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/csv-6.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "cupertino_icons",
@@ -92,6 +92,18 @@
       "languageVersion": "3.6"
     },
     {
+      "name": "device_info_plus",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/device_info_plus-12.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "device_info_plus_platform_interface",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/device_info_plus_platform_interface-7.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/fake_async-1.3.3",
       "packageUri": "lib/",
@@ -104,58 +116,10 @@
       "languageVersion": "3.7"
     },
     {
-      "name": "firebase_auth",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/firebase_auth-6.1.1",
+      "name": "file",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/file-7.0.1",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
-    },
-    {
-      "name": "firebase_auth_platform_interface",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/firebase_auth_platform_interface-8.1.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
-    },
-    {
-      "name": "firebase_auth_web",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/firebase_auth_web-6.0.4",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
-      "name": "firebase_core",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/firebase_core-4.2.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
-    },
-    {
-      "name": "firebase_core_platform_interface",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/firebase_core_platform_interface-6.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
-    },
-    {
-      "name": "firebase_core_web",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/firebase_core_web-3.2.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
-      "name": "firebase_storage",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/firebase_storage-13.0.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
-    },
-    {
-      "name": "firebase_storage_platform_interface",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/firebase_storage_platform_interface-5.2.14",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
-    },
-    {
-      "name": "firebase_storage_web",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/firebase_storage_web-3.10.21",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.0"
     },
     {
       "name": "fixnum",
@@ -165,7 +129,7 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///home/miftah/Documents/flutter/packages/flutter",
+      "rootUri": "file:///home/miftah/develop/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.8"
     },
@@ -182,16 +146,34 @@
       "languageVersion": "3.6"
     },
     {
+      "name": "flutter_native_splash",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/flutter_native_splash-2.4.7",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "flutter_test",
-      "rootUri": "file:///home/miftah/Documents/flutter/packages/flutter_test",
+      "rootUri": "file:///home/miftah/develop/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.8"
     },
     {
       "name": "flutter_web_plugins",
-      "rootUri": "file:///home/miftah/Documents/flutter/packages/flutter_web_plugins",
+      "rootUri": "file:///home/miftah/develop/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.8"
+    },
+    {
+      "name": "fluttertoast",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/fluttertoast-9.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "html",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/html-0.15.6",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
     },
     {
       "name": "http",
@@ -285,9 +267,9 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/meta-1.16.0",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/meta-1.17.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.5"
     },
     {
       "name": "mgrs_dart",
@@ -300,6 +282,12 @@
       "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/nested-1.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "open_filex",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/open_filex-4.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "path",
@@ -381,7 +369,7 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///home/miftah/Documents/flutter/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///home/miftah/develop/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.8"
     },
@@ -416,6 +404,60 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "syncfusion_flutter_core",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-31.2.10",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "syncfusion_flutter_pdf",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/syncfusion_flutter_pdf-31.2.10",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "syncfusion_flutter_pdfviewer",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/syncfusion_flutter_pdfviewer-31.2.10",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "syncfusion_flutter_signaturepad",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/syncfusion_flutter_signaturepad-31.2.10",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "syncfusion_pdfviewer_linux",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_linux-31.2.10",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "syncfusion_pdfviewer_macos",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_macos-31.2.10",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "syncfusion_pdfviewer_platform_interface",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_platform_interface-31.2.10",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "syncfusion_pdfviewer_web",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_web-31.2.10",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "syncfusion_pdfviewer_windows",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_windows-31.2.10",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
       "name": "term_glyph",
       "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/term_glyph-1.2.2",
       "packageUri": "lib/",
@@ -423,7 +465,7 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/test_api-0.7.6",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/test_api-0.7.7",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -542,6 +584,18 @@
       "languageVersion": "3.9"
     },
     {
+      "name": "win32",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/win32-5.15.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.8"
+    },
+    {
+      "name": "win32_registry",
+      "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/win32_registry-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
       "name": "wkt_parser",
       "rootUri": "file:///home/miftah/.pub-cache/hosted/pub.dev/wkt_parser-2.0.0",
       "packageUri": "lib/",
@@ -573,8 +627,8 @@
     }
   ],
   "generator": "pub",
-  "generatorVersion": "3.9.2",
-  "flutterRoot": "file:///home/miftah/Documents/flutter",
-  "flutterVersion": "3.35.7",
+  "generatorVersion": "3.10.1",
+  "flutterRoot": "file:///home/miftah/develop/flutter",
+  "flutterVersion": "3.38.3",
   "pubCache": "file:///home/miftah/.pub-cache"
 }
