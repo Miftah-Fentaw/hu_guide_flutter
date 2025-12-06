@@ -31,7 +31,7 @@
 
 - **Flutter**: Cross-platform app development  
 - **Dart**: Programming language  
-- **Firebase**: Used Google sheet for events, lost and found and related features
+- **Notifications**: Used Google sheet for events, lost and found and related features
 - **Figma**: UI/UX design  
 
 ---
