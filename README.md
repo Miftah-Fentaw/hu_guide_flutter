@@ -17,7 +17,7 @@
 
 ## 🎥 Demo Video
 
-[![HU Guide Demo](https://github.com/Miftah-Fentaw/hu_guide_flutter/raw/refs/heads/main/assets/hu_guide.mp4)](assets/hu_guide.mp4)
+=> https://github.com/Miftah-Fentaw/hu_guide_flutter/raw/refs/heads/main/assets/hu_guide.mp4
 
 ---
 
